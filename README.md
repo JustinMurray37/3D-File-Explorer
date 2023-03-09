@@ -17,7 +17,7 @@ Folders have a size that is the sum of the sizes of all the files contained with
 ---
 
 ### File
-A files represent pieces of data on the disk with certain properties and permissions and exist inside folders. Unlike folders, files are associated with actual data and take up space on the disk. Files can have different extensions indicating the type of data they contain and what programs should be used to open them. Files also commonly have different visual representations based on their extension such as notepad icon for text files, or a piece of a film reel for a video. Files generally cannot be broken down into smaller pieces with some exceptions (.zip, .docx). \
+Files represent pieces of data on the disk with certain properties and permissions and exist inside folders. Unlike folders, files are associated with actual data and take up space on the disk. Files can have different extensions indicating the type of data they contain and what programs should be used to open them. Files also commonly have different visual representations based on their extension such as notepad icon for text files, or a piece of a film reel for a video. Files generally cannot be broken down into smaller pieces with some exceptions (.zip, .docx). \
 In this application, files will be represented as objects on shelves within the room representing the current folder. The files will have different representations based on the type (paper for a document, disc or tape for video/audio).
 
 ---
@@ -26,11 +26,11 @@ In this application, files will be represented as objects on shelves within the 
 In a desktop file explorer there are many operations that can be performed on files and folders such as copy, cut, paste, move, and delete. What these operations do will not change in the 3D file explorer.
 
 #### Cut, copy, paste, and the clipboard
-When copying or cutting files to later be pasted, files and folders are copied to a clipboard to see what you currently have ready to paste and what you have copied and pasted before. The clipboard will be represented as a physical clipboard that the user can interact with.
+When copying or cutting files to later be pasted, files and folders are copied to a clipboard where the user can see what they currently have ready to paste and what they have copied before. The clipboard will be represented as a physical clipboard that the user can interact with.
 
 #### Cut/move
 Cutting and moving are actually the same operation. A file or folder is removed from one location and placed in another. The difference is that moving involves dragging the folder or file to its new location with the mouse, while cutting is done via shortcuts or menu buttons. \
-In the 3D file explorer the move operation makes sense for files since they are represented by small objects. The move operation could also be implemented for folders by shrinking them down if the player grabs them.
+In the 3D file explorer the move operation makes sense for files since they are represented by small objects that can be physically moved. The move operation could also be implemented for folders by shrinking them down if the player grabs them.
 
 ---
 
