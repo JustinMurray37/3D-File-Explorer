@@ -4,7 +4,7 @@ The 3D file explorer will allow a user to explore their file system in 3D with s
 ## Concepts
 ---
 ### Folder
-A folder is a directory in the file system that can contain files and other folders. Folders themselves do not have any data and only exist as a concept for presenting files in an organized way for the user. They are based of the real life concept of folders. \
+A folder is a directory in the file system that can contain files and other folders. Folders themselves do not have any data and only exist as a concept for presenting files in an organized way for the user. \
 In this application, the currently open folder is the room that the user is inside of and the blocks inside the room are the folders that exist within that folder. The files in the folder will be represented as objects on shelves inside the room.
 ![folder room](https://user-images.githubusercontent.com/54608301/223931534-1977b5af-82a3-4cea-b291-2cfd870cff32.png)
 
