@@ -968,7 +968,7 @@ PrefabInstance:
     - target: {fileID: 3994546357700677485, guid: abad299083f29434f904bd8d54528bb1,
         type: 3}
       propertyPath: path
-      value: C:\
+      value: C:\Program Files
       objectReference: {fileID: 0}
     - target: {fileID: 3994546357700677485, guid: abad299083f29434f904bd8d54528bb1,
         type: 3}

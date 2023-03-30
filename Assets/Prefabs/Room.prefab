@@ -46,8 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   path: C:\Users\jstnm\Documents
+  walls: {fileID: 3994546358253747755}
   subfolderPrefab: {fileID: 9122435951038714941, guid: c4cdc926f8c5f9d488cf4fbaf6f6a572,
     type: 3}
+  minSize: 9223372036854775807
+  maxSize: 0
 --- !u!1 &3994546357719090164
 GameObject:
   m_ObjectHideFlags: 0
