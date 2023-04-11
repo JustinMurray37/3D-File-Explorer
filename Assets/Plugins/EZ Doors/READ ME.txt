@@ -1,0 +1,111 @@
+//EZ DOORS// v1.2.5
+If you have any questions contact me at http://newmooninteract.com, email newmoon.interactive@gmail.com, or tweet @newmooninteract or @dirt410 on Twitter
+
+!!I have removed dependencies for probuilder/progrids/render pipeline stuff, which seem to have been the bulk of issues for people. Sorry I didn't do this sooner!!
+
+Tutorials are available on my Youtube Channel @ https://www.youtube.com/channel/UCNEiT3Ts8Omj4RuUkS6gJ0g
+
+//SETUP//
+
+!!If you are using URP or HDRP Render Pipelines, make sure to upgrade materials via 
+		Edit > Render Pipeline > [URP/HDRP] Render Pipeline > Upgrade Project Materials...!!
+
+NOTE: Install Text Mesh Pro from Package Manager if not already installed.
+
+//INPUT SYSTEM// (New to v1.2.5)
+
+I have implemented new versions of player control scripts that utilize the new input system.
+If you don't have that package installed, it *shouldn't* be a problem for you, so you can delete the "New Input" folder under "Interact" if you'd like.
+Opposite that, you can delete the "Old Input" folder if you're using the new input system.
+
+I have also put Key Container on a seperate GameObject to avoid breaking dependencies when swapping out player characters.
+I prefer this over the older implementation, but you can do as you like for your own project.
+
+//AUTO-CREATION// (New to v1.2)
+
+1. You can create doors automatically with standard dimensions either by using the GAMEOBJECT menu, hovering over EZ DOOR sub-menu and 
+----selecting Standard Rotating Door, Standard Sliding Door, or creating a custom door.
+
+OR
+
+2. By right-clicking in the hierarchy window and hovering over EZ DOOR and selecting the door type from there.
+
+You can also customize the SPAWN POSITION, DOOR OFFSET, and DOOR SCALE using the CREATE CUSTOM DOOR editor window.
+
+Found in GAMEOBJECT > EZ DOOR > CREATE CUSTOM DOOR
+
+Either of these 'auto-creation' options will create a new GameObject with the corresponding component attached with a primitive cube as the child.
+The cube is only meant as a temporary mesh which you can easily replace with your own model. 
+
+NOTE: If the origin of your custom model is not centered you will have to adjust the model's local position to line up with the origin of the parent object.
+
+//MANUAL CREATION//
+
+1. Create Empty GameObject
+2. Reset GO position to world origin (0,0,0)
+3. Set GO y-position to half the height of the intended door
+	EXAMPLE: If the door height is 3, set y-position to 1.5
+4. Add Rotating / Sliding Door component
+5. Size Box Collider to size of the door, equal to the door mesh dimensions and center to door mesh
+6. Add door mesh as child or create your own door mesh (no collider is needed on mesh)
+
+-----------------------------------------------------------------------------------------
+
+//INTERACTION//
+
+Add 'DoorInteract.cs' to the player GameObject.
+OR
+Implement IInteractable interface in player-based script. See 'PlayerInteraction.cs' or 'DoorInteract.cs' for examples.
+
+NOTE: Remember to add the appropriate using statements to the top of any scripts you create.
+
+-----------------------------------------------------------------------------------------
+
+//Rotating Door//
+
+Face Direction -- The forward direction of the door (blue axis) in World Space
+Ignore Player -- Set to false to have the door always open away from the player; Set to True to to have the door only open in one direction
+Player Tag -- The tag with which the player is also tagged (if ignore player is set to false)
+Starts Open -- The door starts open
+Automatically Close -- Set to true to have the door auto close after a set time
+Seconds until close -- Time in seconds until the door closes automatically
+Type -- The type of rotation [Quaternion.RotateTowards / Quaternion.Lerp / Quaternion.Slerp]
+Speed -- How fast the door swings open and close
+Angle -- The angle the door opens.
+Starts Locked -- Set to true to have the door need to be unlocked with a key
+Lock when closed -- Set to true if the door automatically locks when it closes
+Use to Activate -- If set to true will trigger another script when activated
+----Example: Load the next Scene OR trigger a light to turn on
+Audio -- The audio clips that play when the door opens, closes, moves, is locked or unlocked
+Randomize Pitch -- Set to true to randomize the pitch of the audio clips to add some variety to the sound effects
+
+Gizmo -- shows opening direction and swing arc
+
+------------------------------------------------------------------------------------------
+
+//Sliding Door//
+
+Face Direction -- The forward direction of the door (blue axis) in World Space
+Move Direction -- The direction the door moves open / closed
+Distance -- The distance the door moves
+Starts Open -- The door starts open
+Automatically Close -- Set to true to have the door auto close after a set time
+Seconds until close -- Time in seconds until the door closes automatically
+Starts Locked -- Set to true to have the door need to be unlocked with a key
+Lock when closed -- Set to true if the door automatically locks when it closes
+Use to Activate -- If set to true will trigger another script when activated
+----Example: Load the next Scene OR trigger a light to turn on
+Audio -- The audio clips that play when the door opens, closes, moves, is locked or unlocked
+Randomize Pitch -- Set to true to randomize the pitch of the audio clips to add some variety to the sound effects
+
+Gizmo -- Shows current position (yellow) and next position (magenta)
+
+-------------------------------------------------------------------------------------------
+
+//Keys//
+
+//Create a new key//
+
+Right click in the Project window => Create > EZ Doors > Key
+	OR 
+Assets Menu > Create > EZ Doors > Key

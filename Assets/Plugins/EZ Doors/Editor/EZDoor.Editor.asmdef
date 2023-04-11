@@ -1,0 +1,16 @@
+{
+    "name": "EZDoor.Editor",
+    "references": [
+        "GUID:ab14ecc3d1b61944cb7d6249de6fe057"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

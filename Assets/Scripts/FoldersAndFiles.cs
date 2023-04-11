@@ -23,6 +23,7 @@ public class FoldersAndFiles : MonoBehaviour
         folder = new DirectoryInfo(path);
         subfolders = new List<GameObject>();
         shelves = new List<GameObject>();
+        files = new List<GameObject>();
         
         {
             long i = 0;
@@ -41,7 +42,7 @@ public class FoldersAndFiles : MonoBehaviour
                     minSize = size;
 
                 float x = -6.0f + 4.0f*(i%4);
-                float z = 10.0f + 2*(i/4);
+                float z = 10.0f + 2.0f*(i/4);
                 GameObject sfObject = Instantiate(subfolderPrefab, transform);
                 sfObject.transform.localPosition = new Vector3(x, 0.0f, z);
                 sfObject.name = sfi.Name;
@@ -52,6 +53,7 @@ public class FoldersAndFiles : MonoBehaviour
                 sfComp.size = size;
 
                 subfolders.Add(sfObject);
+                sfComp.UpdateMaterial();
 
                 i++;
             }
@@ -60,7 +62,7 @@ public class FoldersAndFiles : MonoBehaviour
         foreach(GameObject sfObject in subfolders)
         {
             Vector3 scale = sfObject.transform.localScale;
-            float y = (float)(sfObject.GetComponent<Subfolder>().size - minSize) / (float)(maxSize - minSize) * 9.0f + 2.5f;
+            float y = (float)(sfObject.GetComponent<Subfolder>().size - minSize) / (float)(maxSize - minSize) * 7.0f + 2.5f;
             scale.y = y;
             sfObject.transform.localScale = scale;
         }
@@ -83,10 +85,11 @@ public class FoldersAndFiles : MonoBehaviour
             files.Add(fObject);
         }
 
+        float filesStartZ = 2.0f * ((subfolders.Count-1)/4 + 1) + 14.0f;
         for(int i = 0; i*10 < files.Count; i++)
         {
-            float z = 0.0f;
-            float x = 0.0f;
+            float z = filesStartZ + 4.0f * (i/2) ;
+            float x = i%2==0 ? -6.0f : 6.0f;
             GameObject shelf = Instantiate(shelfPrefab, transform);
             shelf.transform.localPosition = new Vector3(x, 0.0f, z);
             shelf.name = "Shelf_" + i.ToString();
@@ -97,13 +100,27 @@ public class FoldersAndFiles : MonoBehaviour
         for(int i = 0; i < files.Count; i++)
         {
             Vector3 pos = new Vector3();
-           //Calculate file position
-           files[i].transform.localPosition = pos;
+            pos.z = i/20 * 4.0f + filesStartZ;
+            pos.x = ((i/10)%2==0 ? -9.0f : 3.0f) + i%5 * 1.5f;
+            pos.y = (i/5)%2==0 ? 1.125f : 1.875f;
+
+            files[i].transform.localPosition = pos;
         }
 
         Vector3 roomScale = walls.transform.localScale;
-        roomScale.z = 3.5f * ((subfolders.Count-1)/4 + 1) + 5.0f * (shelves.Count/2 + shelves.Count%2) + 10.0f;
+        roomScale.z = 2.0f * ((subfolders.Count-1)/4 + 1) + 4.0f * (shelves.Count/2 + shelves.Count%2) + 15.0f;
         walls.transform.localScale = roomScale;
+
+        Vector3 exitPos = new Vector3(0.0f, 1.33f, roomScale.z);
+        transform.Find("Exit").localPosition = exitPos;
+
+        Transform next = transform.Find("Room");
+        if(next)
+        {
+            Vector3 nextPos = next.localPosition;
+            nextPos.z = roomScale.z;
+            next.localPosition = nextPos;
+        }
     }
 
     // Update is called once per frame

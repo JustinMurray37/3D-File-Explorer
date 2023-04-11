@@ -1,0 +1,22 @@
+{
+    "name": "EZDoor.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.3.0",
+            "define": "NEW_INPUT_SYSTEM"
+        }
+    ],
+    "noEngineReferences": false
+}
