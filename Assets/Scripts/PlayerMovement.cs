@@ -22,17 +22,23 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance;
     public float jumpDistance;
     public LayerMask groundMask;
+    public bool isFlying;
+
+    float oldAccelY;
 
 
     void Awake()
     {
         controls = new InputMaster();
+        isFlying = false;
+        oldAccelY = accelY;
     }
 
     void Update()
     {
         bool doMove = true;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, ~groundMask);
+        isFlying = controls.Player.Fly.ReadValue<float>() != 0.0f;
 
         float velDeltaY = accelY * Time.deltaTime;
         float velY = Mathf.Max(velocity.y + velDeltaY, minVelY);
@@ -40,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         velXZ.y = 0.0f;
 
         float accelMod = accelModifier;
-        if(isGrounded)
+        if(isGrounded || isFlying)
             accelMod = 1.0f;
 
         Vector2 inputDirection = controls.Player.Movement.ReadValue<Vector2>();
@@ -49,8 +55,30 @@ public class PlayerMovement : MonoBehaviour
 
         velXZ += velDeltaXZ;
 
-        if(isGrounded)
+        if(isFlying)
         {
+            accelY = 0.0f;
+
+            Vector3 original = transform.position;
+
+            if(controls.Player.Jump.ReadValue<float>() != 0.0f)
+                velY = jumpSpeed;
+            else
+                velY = 0.0f;
+
+            float decelMagnitude = velXZ.magnitude + decelXZ * Time.deltaTime;
+            decelMagnitude = Mathf.Max(decelMagnitude, 0.0f);
+            velXZ = velXZ.normalized * decelMagnitude;
+            velXZ = Vector3.ClampMagnitude(velXZ, maxVelXZ);
+
+            velocity.x = velXZ.x;
+            velocity.z = velXZ.z;
+            velocity.y = velY;
+        }
+        else if(isGrounded)
+        {
+            accelY = oldAccelY;
+
             Vector3 original = transform.position;
 
             if(velY < 0.0f)
@@ -81,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
                     transform.position = original;
             }
         }
+        else
+            accelY = oldAccelY;
 
         if(doMove)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class Subfolder : MonoBehaviour
 {
@@ -14,7 +15,13 @@ public class Subfolder : MonoBehaviour
     public Texture2D thick;
     public Texture2D lightTex;
     public GameObject model;
+    public TMP_Text hoverLabel;
     Material material;
+
+    public void Start()
+    {
+        hoverLabel.text = folderInfo.Name;
+    }
 
     public void UpdateMaterial()
     {   
