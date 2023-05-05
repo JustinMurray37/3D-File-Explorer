@@ -1,38 +1,31 @@
 # 3D-File-Explorer
 The 3D file explorer will allow a user to explore their file system in 3D with similar functionality to the 2D desktop file explorer. 
 
+![overview](https://user-images.githubusercontent.com/54608301/236376024-7767b48a-072a-4c05-88ba-c34dc930cc7d.jpg)
+
 ## Concepts
----
-### Folder
-A folder is a directory in the file system that can contain files and other folders. Folders themselves do not have any data and only exist as a concept for presenting files in an organized way for the user. \
-In this application, the currently open folder is the room that the user is inside of and the blocks inside the room are the folders that exist within that folder. The files in the folder will be represented as objects on shelves inside the room.
-![folder room](https://user-images.githubusercontent.com/54608301/223931534-1977b5af-82a3-4cea-b291-2cfd870cff32.png)
-
-#### Folders exist within folders
-Folders exist within folders. To maintain this concept moving from 2D to 3D, folders can be entered through a doorway that appears on the face of a folder block. This doorway leads into a new room representing the inside of that folder. The doorway at the front of the room will lead back out of the doorway on the folder block inside the parent folder room. Unlike the back button in the desktop file explorer, exiting through the doorway only leads to the parent folder, and cannot lead to the previous folder if the current folder was "jumped" to through some kind of shortcut.
-
-#### Folder size
-Folders have a size that is the sum of the sizes of all the files contained within it and its subfolders. Calling it "size" is already an abstraction as data does not take up any physical space on disk. This concept is easily mapped to 3D as the folder blocks can have their physical size scaled with their size on disk. Each folder block will have a different height representing its size relative to other folders. The physical sizes will be based on the minimum and maximum sizes within the current folder and will not be comparable between folders.
 
 ---
+### Current Folder
+In a 2D file explorer, the contents of the current folder are displayed in a large area of the window as a list or grid. In the 3D file explorer this area is replaced with a 3D environment that can be navigated using WASD and mouse controls. Folders are represented by blocks, and files represented by small spheres. All are labeled as they would be in the 2D file explorer. The subfolders and files are seperated as they would be in the 2D file explorer.
 
-### File
-Files represent pieces of data on the disk with certain properties and permissions and exist inside folders. Unlike folders, files are associated with actual data and take up space on the disk. Files can have different extensions indicating the type of data they contain and what programs should be used to open them. Files also commonly have different visual representations based on their extension such as notepad icon for text files, or a piece of a film reel for a video. Files generally cannot be broken down into smaller pieces with some exceptions (.zip, .docx). \
-In this application, files will be represented as objects on shelves within the room representing the current folder. The files will have different representations based on the type (paper for a document, disc or tape for video/audio).
+### Subfolders
+Subfolders are represented by blocks layed out in a grid. Each subfolder's height represents its size relative to other subfolders within the current folder. Larger folders are taller, and smaller folders are shorter. Each folder also has a grid overlayed on its surface. This grid represents the number of items contained immediately within. A denser grid means a folder has more items, and a sparser grid means it has less items. This is not relative to other folders and is determined by values set in code. Each folder has its name hovering over it that always faces the user.
 
----
+### Files
+![File](https://user-images.githubusercontent.com/54608301/236376045-af3e5bb4-3ca8-4e4a-bfba-138cebf7a04a.jpg)
 
-### Operations
-In a desktop file explorer there are many operations that can be performed on files and folders such as copy, cut, paste, move, and delete. What these operations do will not change in the 3D file explorer.
+Files within the current folder are represented by spheres sitting on shelves. Each has its name hovering over it just like the subfolders.
 
-#### Cut, copy, paste, and the clipboard
-When copying or cutting files to later be pasted, files and folders are copied to a clipboard where the user can see what they currently have ready to paste and what they have copied before. The clipboard will be represented as a physical clipboard that the user can interact with.
+### Item Highlight!
+[highlight](https://user-images.githubusercontent.com/54608301/236376067-03805da4-ca43-46b7-a98e-e1f3d0cf4933.jpg)
 
-#### Cut/move
-Cutting and moving are actually the same operation. A file or folder is removed from one location and placed in another. The difference is that moving involves dragging the folder or file to its new location with the mouse, while cutting is done via shortcuts or menu buttons. \
-In the 3D file explorer the move operation makes sense for files since they are represented by small objects that can be physically moved. The move operation could also be implemented for folders by shrinking them down if the player grabs them.
+When looking at an item, a blue highlight will appear around it, and the item's size will be displayed along the bottom of the screen.
 
----
+### 2D Application with 3D Elements
+![desktop](https://user-images.githubusercontent.com/54608301/236375929-e05b433b-cd59-4860-8e9c-a63b29706c7b.jpg)
 
-### Todo
-Trash, multiple drives, hidden files and folders, tabs, shortcuts, network, opening files...
+Many applications using 3D are first and foremost 3D, with 2D UI elements on top. This file explorer is much like the 2D file explorer, but with a 3D element added to it. The 3D environement replaces the area where the current folder's contents usually are. This keeps most of the application simple and familiar. Adding the usual buttons and menus to a 3D world does not provide any benefit here. Showing the files and folders and 3D objects does, however.
+
+## Issues
+The controls as they are may not be intuitive to a lot of people. Many people, especially those who are older, may not be familiar with exploring 3D environments, especially in first-person. This application would likely be easier to use for most people if the controls were mouse only. Controls similar to something like Blender would be best. Scrolling to zoom in and out, middle click to pan, right click to rotate. This would also allow the user to move between interaction with the 3D and 2D portions of the application more easily because a key like ESC would not need to be pressed to release control from the first person camera.
