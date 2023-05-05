@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="Container" style="background-color: rgba(108, 108, 108, 0); height: auto; -unity-text-align: upper-left; flex-grow: 1;">
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="Label" style="height: 40px; -unity-text-align: middle-left; font-size: 22px; background-color: rgb(77, 77, 77); padding-left: 30px; color: rgb(210, 210, 210); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-bottom-width: 2px;" />
+            <ui:VisualElement name="QuickAccess" focusable="true" style="width: 10%; flex-grow: 1; border-left-width: 0; border-right-width: 2px; border-top-width: 0; border-bottom-width: 0; background-color: rgb(77, 77, 77); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:Label text="Home" display-tooltip-when-elided="true" name="Home" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 1px; height: 26px; -unity-text-align: middle-left; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; margin-left: 5px; margin-right: 5px;" />
+                <ui:Label text="Documents" display-tooltip-when-elided="true" name="Documents" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 0; height: 26px; -unity-text-align: middle-left; margin-left: 5px;" />
+                <ui:Label text="Pictures" display-tooltip-when-elided="true" name="Pictures" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 0; height: 26px; -unity-text-align: middle-left; margin-left: 5px;" />
+                <ui:Label text="Downloads" display-tooltip-when-elided="true" name="Downloads" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 0; height: 26px; -unity-text-align: middle-left; margin-left: 5px;" />
+                <ui:Label text="Music" display-tooltip-when-elided="true" name="Music" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 0; height: 26px; -unity-text-align: middle-left; margin-left: 5px;" />
+                <ui:Label text="Recycle Bin" display-tooltip-when-elided="true" name="RecycleBin" style="padding-left: 5px; font-size: 16px; color: rgb(236, 236, 236); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 0; height: 26px; -unity-text-align: middle-left; margin-left: 5px; margin-right: 5px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Crosshair" style="position: absolute; flex-grow: 1; height: 100%; width: 100%; align-items: center; justify-content: center;">
+                <ui:VisualElement name="Crosshair" style="width: 8px; height: 8px; background-color: rgb(231, 0, 218);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ItemInfo" style="background-color: rgb(77, 77, 77); height: 40px; border-bottom-width: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 2px; color: rgb(210, 210, 210);">
+                <ui:Label text="Size: " display-tooltip-when-elided="true" name="Size" style="flex-grow: 1; -unity-text-align: middle-left; margin-left: 10px; font-size: 20px; color: rgb(210, 210, 210);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

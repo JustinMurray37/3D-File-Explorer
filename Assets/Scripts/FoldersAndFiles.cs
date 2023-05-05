@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using UnityEngine.UIElements;
 
 public class FoldersAndFiles : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class FoldersAndFiles : MonoBehaviour
     public GameObject filePrefab;
     public long minSize = long.MaxValue;
     public long maxSize = 0;
+    public UIDocument ui;
     // Start is called before the first frame update
     void Start()
     {
+        VisualElement root = ui.rootVisualElement;
+        Label label = root.Q<Label>("Label");
+        label.text = path;
+
         folder = new DirectoryInfo(path);
         subfolders = new List<GameObject>();
         shelves = new List<GameObject>();
